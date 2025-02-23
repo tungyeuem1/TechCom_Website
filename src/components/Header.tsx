@@ -1,4 +1,5 @@
 import Login from "../pages/Login";
+import { Register } from "../pages/Register";
 
 export function Header() {
     return (
@@ -393,6 +394,7 @@ export function Header() {
             </header>
 
             <Login/>
+            <Register/>
 
 
 
