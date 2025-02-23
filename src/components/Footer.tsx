@@ -96,6 +96,7 @@ export function Footer() {
                                         Opening Hours
                                     </a>
                                 </li>
+                                
                                 <li>
                                     <a href="contact.html">
                                         <i className="fa-solid fa-chevrons-right"></i>
