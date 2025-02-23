@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Login from "../pages/Login";
 
 export function Header() {
     return (
@@ -101,12 +101,12 @@ export function Header() {
                             <li><i className="fa-light fa-comments"></i><a href="contact.html">Live Chat</a></li>
                             <li><i className="fa-light fa-user"></i>
 
-                                
-                                    <Link to={"/register"}>
-                                    <button data-bs-toggle="modal" data-bs-target="#loginModal">
-                                        Login
-                                    </button></Link>
-                                
+
+
+                                <button data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    Login
+                                </button>
+
 
                             </li>
                         </ul>
@@ -391,6 +391,8 @@ export function Header() {
                     </div>
                 </div>
             </header>
+
+            <Login/>
 
 
 

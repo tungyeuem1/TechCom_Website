@@ -1,4 +1,23 @@
 {
   "products": [],
-  "users": []
+  "users": [
+    {
+      "email": "tungdsph42916@fpt.edu.vn",
+      "password": "$2a$10$8YXtKqTBiPNQtmm74ZdlauzxaeAF5SsgxsJpZuMLShKU4wcAdCbXO",
+      "username": "anhyeuem",
+      "id": 1
+    },
+    {
+      "email": "tungdsph429156@fpt.edu.vn",
+      "password": "$2a$10$UXKKCcPwHv14PimFH6rFC.cOtyO2lZDmJHWuwXr.WvTi3DLMEPwOG",
+      "username": "lon",
+      "id": 2
+    },
+    {
+      "email": "tung123@gmail.com",
+      "password": "$2a$10$bE0JOdWuTmUSx4u5nKyw9efdtuDwC02ZOLZQeReCKJSverIwLpRem",
+      "username": "tung123456@gmail.com",
+      "id": 3
+    }
+  ]
 }

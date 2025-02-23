@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { useRoutes } from "react-router-dom";
 import ClientLayout from "./layouts/ClientLayout";
-import Register from "./pages/Register";
+import HomePage from "./pages/HomePage";
 
 function App() {
     const routes = useRoutes([
@@ -9,7 +9,8 @@ function App() {
             path:"",
             element:<ClientLayout/>,
             children:[
-                {path:"register", element:<Register/>}
+                
+                {path:"", element:<HomePage/>},
             ]
             
         },
@@ -21,7 +22,7 @@ function App() {
 
             
 
-            <div>{routes}</div>
+            <div >{routes}</div>
             <Toaster />
         </>
     );
