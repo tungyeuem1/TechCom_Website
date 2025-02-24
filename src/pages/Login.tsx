@@ -13,6 +13,7 @@ export default function Login() {
                                 <div className="form-wrapper">
                                     <h1 id="loginModalLabel">welcome back!</h1>
                                     <input className="inputField" type="email" name="email" placeholder="Email Address" />
+                                    <input className="inputField" type="password" name="password" placeholder="Enter Password"/>
                                     <div className="input-check remember-me">
                                         <div className="checkbox-wrapper">
                                             <input type="checkbox" className="form-check-input" name="save-for-next"

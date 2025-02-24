@@ -393,8 +393,8 @@ export function Header() {
                 </div>
             </header>
 
-            <Login/>
-            <Register/>
+            <Login />
+            <Register />
 
 
 

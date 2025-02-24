@@ -817,7 +817,7 @@ span {
   place-items: center;
   place-content: center;
 }
-@media (max-width: 1500px) {
+@media (max-width: 1520px) {
   .modal-dialog .modal-content .modal-body .identityBox {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -2044,7 +2044,7 @@ span {
   gap: 50px;
   position: relative;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1520px) {
   .header-1 .header-left {
     gap: 280px;
   }
@@ -2412,7 +2412,7 @@ span {
 .header-1 .header-right .category-oneadjust .search-toggle-box {
   width: 319px;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1520px) {
   .header-1 .header-right .category-oneadjust .search-toggle-box {
     width: 150px;
   }
@@ -2523,7 +2523,7 @@ span {
   gap: 50px;
   position: relative;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1500px) {
   .header-2 .header-left {
     gap: 280px;
   }
