@@ -5,13 +5,29 @@ import { Banner } from "../components/Banner";
 import { Footer } from "../components/Footer";
 
 
-export default function ClientLayout() {
-
+export  function ClientLayout() {
+    
  
     return (
         <>
             <Header />
             <Banner/>
+            
+            <div className="container">
+                <Outlet/>
+            </div>
+            <Footer/>
+        </>
+
+    )
+};
+export  function ClientShop() {
+
+   
+    return (
+        <>
+            <Header />
+            
             
             <div className="container">
                 <Outlet/>

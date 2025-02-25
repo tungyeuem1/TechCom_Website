@@ -2,9 +2,11 @@ import Login from "../pages/Login";
 import { Register } from "../pages/Register";
 
 export function Header() {
+
     return (
         <>
             <div className="cursor-follower"></div>
+
             <div className="fix-area">
                 <div className="offcanvas__info">
                     <div className="offcanvas__wrapper">
@@ -124,7 +126,7 @@ export function Header() {
                                 <div className="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                                     <div className="header-left">
                                         <div className="logo">
-                                            <a href="index.html" className="header-logo">
+                                            <a href="/" className="header-logo">
                                                 <img src="./src/assets/img/logo/white-logo.svg" alt="logo-img" />
                                             </a>
                                         </div>
@@ -133,27 +135,27 @@ export function Header() {
                                                 <nav>
                                                     <ul>
                                                         <li>
-                                                            <a href="index.html">
+                                                            <a href="/">
                                                                 Home
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="index.html">Home 01</a></li>
-                                                                <li><a href="index-2.html">Home 02</a></li>
+                                                                <li><a href="/">Home 01</a></li>
+                                                                <li><a href="/">Home 02</a></li>
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <a href="shop.html">
+                                                            <a href="shop">
                                                                 Shop
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="shop.html">Shop Default</a></li>
-                                                                <li><a href="shop-list.html">Shop List</a></li>
-                                                                <li><a href="shop-details.html">Shop Details</a></li>
-                                                                <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                                <li><a href="checkout.html">Checkout</a></li>
+                                                                <li><a href="shop">Shop Default</a></li>
+                                                                <li><a href="shoplist">Shop List</a></li>
+                                                                <li><a href="shopdetail">Shop Details</a></li>
+                                                                <li><a href="shopcart">Shop Cart</a></li>
+                                                                <li><a href="wishlist">Wishlist</a></li>
+                                                                <li><a href="checkout">Checkout</a></li>
                                                             </ul>
                                                         </li>
                                                         <li className="has-dropdown">
@@ -230,10 +232,10 @@ export function Header() {
                                             </form>
                                         </div>
                                         <div className="menu-cart">
-                                            <a href="wishlist.html" className="cart-icon">
+                                            <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <a href="shop-cart.html" className="cart-icon">
+                                            <a href="shopcart" className="cart-icon">
                                                 <i className="fa-regular fa-cart-shopping"></i>
                                             </a>
                                             <div className="header-humbager ml-30">
@@ -263,7 +265,7 @@ export function Header() {
                                 <div className="col-6 col-md-6 col-lg-10 col-xl-8 col-xxl-10">
                                     <div className="header-left">
                                         <div className="logo">
-                                            <a href="index.html" className="header-logo">
+                                            <a href="/" className="header-logo">
                                                 <img src="./src/assets/img/logo/white-logo.svg" alt="logo-img" />
                                             </a>
                                         </div>
@@ -272,27 +274,27 @@ export function Header() {
                                                 <nav id="mobile-menu">
                                                     <ul>
                                                         <li>
-                                                            <a href="index.html">
+                                                            <a href="/">
                                                                 Home
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="index.html">Home 01</a></li>
-                                                                <li><a href="index-2.html">Home 02</a></li>
+                                                                <li><a href="/">Home 01</a></li>
+                                                                <li><a href="/">Home 02</a></li>
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <a href="shop.html">
+                                                        <a href="shop">
                                                                 Shop
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="shop.html">Shop Default</a></li>
-                                                                <li><a href="shop-list.html">Shop List</a></li>
-                                                                <li><a href="shop-details.html">Shop Details</a></li>
-                                                                <li><a href="shop-cart.html">Shop Cart</a></li>
-                                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                                <li><a href="checkout.html">Checkout</a></li>
+                                                                <li><a href="shop">Shop Default</a></li>
+                                                                <li><a href="shoplist">Shop List</a></li>
+                                                                <li><a href="shopdetail">Shop Details</a></li>
+                                                                <li><a href="shopcart">Shop Cart</a></li>
+                                                                <li><a href="wishlist">Wishlist</a></li>
+                                                                <li><a href="checkout">Checkout</a></li>
                                                             </ul>
                                                         </li>
                                                         <li className="has-dropdown">
@@ -369,10 +371,10 @@ export function Header() {
                                             </form>
                                         </div>
                                         <div className="menu-cart">
-                                            <a href="wishlist.html" className="cart-icon">
+                                            <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <a href="shop-cart.html" className="cart-icon">
+                                            <a href="shopcart" className="cart-icon">
                                                 <i className="fa-regular fa-cart-shopping"></i>
                                             </a>
                                             <div className="header-humbager ml-30">

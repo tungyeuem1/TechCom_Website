@@ -1,23 +1,75 @@
 {
-  "products": [],
-  "users": [
+  "products": [
     {
-      "email": "tungdsph42916@fpt.edu.vn",
-      "password": "$2a$10$8YXtKqTBiPNQtmm74ZdlauzxaeAF5SsgxsJpZuMLShKU4wcAdCbXO",
-      "username": "anhyeuem",
-      "id": 1
+      "id": 19,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "http://127.0.0.1:5500/gramentheme.com/html/bookle/assets/img/book/03.png",
+      "rating": "4"
     },
     {
-      "email": "tungdsph429156@fpt.edu.vn",
-      "password": "$2a$10$UXKKCcPwHv14PimFH6rFC.cOtyO2lZDmJHWuwXr.WvTi3DLMEPwOG",
-      "username": "lon",
-      "id": 2
+      "id": 20,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
     },
     {
-      "email": "tung123@gmail.com",
-      "password": "$2a$10$bE0JOdWuTmUSx4u5nKyw9efdtuDwC02ZOLZQeReCKJSverIwLpRem",
-      "username": "tung123456@gmail.com",
-      "id": 3
+      "id": 21,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
+    },
+    {
+      "id": 22,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
+    },
+    {
+      "id": 22,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
+    },
+    {
+      "id": 22,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
+    },
+    {
+      "id": 22,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "author": "Doan van hieu",
+      "price": 7.95,
+      "discount": "100% ",
+      "oldPrice": "152",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "rating": "4"
     }
-  ]
+  ],
+  "users": []
 }
