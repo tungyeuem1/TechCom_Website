@@ -29,9 +29,9 @@ export  function ClientShop() {
             <Header />
             
             
-            <div className="container">
-                <Outlet/>
-            </div>
+          
+                <div><Outlet/></div>
+           
             <Footer/>
         </>
 

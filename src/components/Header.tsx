@@ -1,8 +1,20 @@
+import { useMemo } from "react";
+import { useCart } from "../contexts/cart";
 import Login from "../pages/Login";
 import { Register } from "../pages/Register";
+import { Badge } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export function Header() {
+    const { cart } = useCart();
 
+    const cartQuantity = useMemo(
+        () =>
+            cart
+                ? cart.products.reduce((total, { quantity }) => total + quantity, 0)
+                : 0,
+        [cart]
+    );
     return (
         <>
             <div className="cursor-follower"></div>
@@ -127,7 +139,7 @@ export function Header() {
                                     <div className="header-left">
                                         <div className="logo">
                                             <a href="/" className="header-logo">
-                                                <img src="./src/assets/img/logo/white-logo.svg" alt="logo-img" />
+                                                <img src="/src/assets/img/logo/white-logo.svg" alt="logo-img" />
                                             </a>
                                         </div>
                                         <div className="mean__menu-wrapper">
@@ -145,17 +157,17 @@ export function Header() {
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <a href="shop">
+                                                            <a href="/shop">
                                                                 Shop
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="shop">Shop Default</a></li>
-                                                                <li><a href="shoplist">Shop List</a></li>
-                                                                <li><a href="shopdetail">Shop Details</a></li>
-                                                                <li><a href="shopcart">Shop Cart</a></li>
-                                                                <li><a href="wishlist">Wishlist</a></li>
-                                                                <li><a href="checkout">Checkout</a></li>
+                                                                <li><a href="/shop">Shop Default</a></li>
+                                                                <li><a href="/shoplist">Shop List</a></li>
+                                                                <li><a href="/shopdetail/:id">Shop Details</a></li>
+                                                                <li><a href="/shopcart">Shop Cart</a></li>
+                                                                <li><a href="/wishlist">Wishlist</a></li>
+                                                                <li><a href="/checkout">Checkout</a></li>
                                                             </ul>
                                                         </li>
                                                         <li className="has-dropdown">
@@ -235,13 +247,15 @@ export function Header() {
                                             <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <a href="shopcart" className="cart-icon">
+                                            <Link to={"/shopcart"} className="cart-icon">
+                                                <Badge badgeContent={cartQuantity} color="secondary">
                                                 <i className="fa-regular fa-cart-shopping"></i>
-                                            </a>
+                                                </Badge>
+                                            </Link>
                                             <div className="header-humbager ml-30">
                                                 <a className="sidebar__toggle" href="javascript:void(0)">
                                                     <div className="bar-icon-2">
-                                                        <img src="./src/assets/img/icon/icon-13.svg" alt="img" />
+                                                        <img src="/src/assets/img/icon/icon-13.svg" alt="img" />
                                                     </div>
                                                 </a>
                                             </div>
@@ -266,7 +280,7 @@ export function Header() {
                                     <div className="header-left">
                                         <div className="logo">
                                             <a href="/" className="header-logo">
-                                                <img src="./src/assets/img/logo/white-logo.svg" alt="logo-img" />
+                                                <img src="/src/assets/img/logo/white-logo.svg" alt="logo-img" />
                                             </a>
                                         </div>
                                         <div className="mean__menu-wrapper">
@@ -284,17 +298,17 @@ export function Header() {
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                        <a href="shop">
+                                                            <a href="/shop">
                                                                 Shop
                                                                 <i className="fas fa-angle-down"></i>
                                                             </a>
                                                             <ul className="submenu">
-                                                                <li><a href="shop">Shop Default</a></li>
-                                                                <li><a href="shoplist">Shop List</a></li>
-                                                                <li><a href="shopdetail">Shop Details</a></li>
-                                                                <li><a href="shopcart">Shop Cart</a></li>
-                                                                <li><a href="wishlist">Wishlist</a></li>
-                                                                <li><a href="checkout">Checkout</a></li>
+                                                                <li><a href="/shop">Shop Default</a></li>
+                                                                <li><a href="/shoplist">Shop List</a></li>
+                                                                <li><a href="/shopdetail/:id">Shop Details</a></li>
+                                                                <li><a href="/shopcart">Shop Cart</a></li>
+                                                                <li><a href="/wishlist">Wishlist</a></li>
+                                                                <li><a href="/checkout">Checkout</a></li>
                                                             </ul>
                                                         </li>
                                                         <li className="has-dropdown">
@@ -374,13 +388,15 @@ export function Header() {
                                             <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <a href="shopcart" className="cart-icon">
+                                            <Link to={"/shopcart"} className="cart-icon">
+                                                <Badge badgeContent={cartQuantity} color="secondary">
                                                 <i className="fa-regular fa-cart-shopping"></i>
-                                            </a>
+                                                </Badge>
+                                            </Link>
                                             <div className="header-humbager ml-30">
                                                 <a className="sidebar__toggle" href="javascript:void(0)">
                                                     <div className="bar-icon-2">
-                                                        <img src="./src/assets/img/icon/icon-13.svg" alt="img" />
+                                                        <img src="/src/assets/img/icon/icon-13.svg" alt="img" />
                                                     </div>
                                                 </a>
                                             </div>

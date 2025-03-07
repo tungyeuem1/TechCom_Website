@@ -5,30 +5,44 @@
       "title": "Opna Women's Short Sleeve Moisture",
       "author": "Doan van hieu",
       "price": 7.95,
-      "discount": "100% ",
+      "discount": "100 ",
       "oldPrice": "152",
       "image": "http://127.0.0.1:5500/gramentheme.com/html/bookle/assets/img/book/03.png",
-      "rating": "4"
+      "rating": "4",
+      "rating1": {
+        "rate": 4.5,
+        "count": 146
+      } 
     },
     {
       "id": 20,
       "title": "Opna Women's Short Sleeve Moisture",
       "author": "Doan van hieu",
       "price": 7.95,
-      "discount": "100% ",
+      "discount": "60 ",
       "oldPrice": "152",
       "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
-      "rating": "4"
+      "rating": "4",
+      "rating1": {
+        "rate": 4.5,
+        "count": 146
+      } 
     },
     {
       "id": 21,
       "title": "Opna Women's Short Sleeve Moisture",
       "author": "Doan van hieu",
       "price": 7.95,
-      "discount": "100% ",
+      "discount": " ",
       "oldPrice": "152",
       "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
-      "rating": "4"
+      "format": " oghukjfdg",
+      "category": " ",
+      "rating": "5",
+      "rating1": {
+        "rate": 4.5,
+        "count": 146
+      } 
     },
     {
       "id": 22,

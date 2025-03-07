@@ -11,6 +11,10 @@ interface Product {
     discount?: number;  // Có thể không có
     image: string;
     rating: number;
+    rating1: {
+        rate: number;
+        count: number;
+    };
 }
 
 export default function HomePage() {
@@ -32,7 +36,7 @@ export default function HomePage() {
                     <div className="section-title">
                         <h2 className="wow fadeInUp" data-wow-delay=".3s">Featured Books</h2>
                     </div>
-                    <a href="shop.html" className="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
+                    <a href="shop" className="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
                         Explore More <i className="fa-solid fa-arrow-right-long"></i>
                     </a>
                 </div>
@@ -43,12 +47,12 @@ export default function HomePage() {
                             <div key={index} className="swiper-slide">
                                 <div className="shop-box-items style-2">
                                     <div className="book-thumb center">
-                                        <a href={`/shop-details/${product.id}`}>
+                                        <a href={`/shopdetail/${product.id}`}>
                                             <img src={product.image} alt={product.title} />
                                         </a>
                                         <ul className="post-box">
-                                            <li>Hot</li>
-                                            <li>-{product.discount}%</li>
+                                        {product.rating1?.rate >= 4.5 && <li>Hot</li>}
+                                        {product.discount >= 5 && <li>{product.discount}%</li>}
                                         </ul>
                                         <ul className="shop-icon d-grid justify-content-center align-items-center">
                                             <li>
@@ -60,13 +64,13 @@ export default function HomePage() {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href={`/shop-details/${product.id}`}><i className="far fa-eye"></i></a>
+                                                <a href={`/shopdetail/${product.id}`}><i className="far fa-eye"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="shop-content">
                                         <h5>{product.author}</h5>
-                                        <h3><a href={`/shop-details/${product.id}`}>{product.title}</a></h3>
+                                        <h3><a href={`/shopdetail/${product.id}`}>{product.title}</a></h3>
                                         <ul className="price-list">
                                             <li>${product.price}</li>
                                             {product.oldPrice && <li><del>${product.oldPrice}</del></li>}
@@ -86,7 +90,7 @@ export default function HomePage() {
                                         </ul>
                                     </div>
                                     <div className="shop-button">
-                                        <a href="shop-cart.html" className="theme-btn">
+                                        <a href={`/shopdetail/${product.id}`} className="theme-btn">
                                             <i className="fa-solid fa-basket-shopping"></i> Add To Cart
                                         </a>
                                     </div>

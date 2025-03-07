@@ -1,83 +1,116 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-
+// Định nghĩa kiểu dữ liệu của sản phẩm
+interface Product {
+    id: string;
+    title: string;
+    price: number;
+    image: string;
+    rating: number;
+    description: string;
+}
 
 export default function ShopList() {
+    const [products, setProducts] = useState<Product[]>([]); // 🛠 Khai báo kiểu dữ liệu rõ ràng
 
+    useEffect(() => {
+        axios.get<Product[]>("http://localhost:3000/products")
+            .then(response => setProducts(response.data))
+            .catch(error => console.error("Lỗi khi lấy danh sách sản phẩm:", error));
+    }, []);
 
     return (
         <>
             <div className="breadcrumb-wrapper">
                 <div className="book1">
-                    <img src="./src/assets/img/hero/book1.png" alt="book" />
+                    <img src="/src/assets/img/hero/book1.png" alt="book" />
                 </div>
                 <div className="book2">
-                    <img src="./src/assets/img/hero/book2.png" alt="book" />
+                    <img src="/src/assets/img/hero/book2.png" alt="book" />
                 </div>
                 <div className="container">
                     <div className="page-heading">
                         <h1>Shop List</h1>
                         <div className="page-header">
-                            <ul className="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
-                                <li>
-                                    <a href="index.html">
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <i className="fa-solid fa-chevron-right"></i>
-                                </li>
-                                <li>
-                                    Shop List
-                                </li>
+                            <ul className="breadcrumb-items">
+                                <li><Link to="/">Home</Link></li>
+                                <li><i className="fa-solid fa-chevron-right" /></li>
+                                <li>Shop List</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Danh sách sản phẩm */}
             <section className="shop-section fix section-padding">
                 <div className="container">
                     <div className="shop-default-wrapper">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="woocommerce-notices-wrapper wow fadeInUp" data-wow-delay=".3s">
-                                    <p>Showing 1-3 Of 34 Results </p>
-                                    <div className="form-clt">
-                                        <div className="nice-select" tabIndex={0}>
-                                            <span className="current">
-                                                Default Sorting
-                                            </span>
-                                            <ul className="list">
-                                                <li data-value="1" className="option selected focus">
-                                                    Default sorting
-                                                </li>
-                                                <li data-value="1" className="option">
-                                                    Sort by popularity
-                                                </li>
-                                                <li data-value="1" className="option">
-                                                    Sort by average rating
-                                                </li>
-                                                <li data-value="1" className="option">
-                                                    Sort by latest
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="icon">
-                                            <a href="shop-list.html"><i className="fas fa-list"></i></a>
-                                        </div>
-                                        <div className="icon-2 active">
-                                            <a href="shop.html"><i className="fa-sharp fa-regular fa-grid-2"></i></a>
-                                        </div>
-                                    </div>
+                        <div className="row g-4">
+                            <div className="col-xl-12">
+                                <div className="woocommerce-notices-wrapper">
+                                    <p>Showing {products.length} of {products.length} Results</p>
                                 </div>
                             </div>
 
+                            <div className="row">
+                                {products.map((product) => (
+                                    <div className="col-lg-12" key={product.id}>
+                                        <div className="shop-list-items">
+                                            <div className="shop-list-thumb">
+                                                <img src={product.image} alt={product.title} />
+                                                <ul className="post-box">
+                                                    {product.rating1?.rate >= 4.5 && <li>Hot</li>}
+                                                    {product.discount >= 5 && <li>{product.discount}%</li>}
+                                                    
+                                                </ul>
+                                            </div>
+
+                                            <div className="shop-list-content">
+                                                <h3>
+                                                    <Link to={`/shop/${product.id}`}>{product.title}</Link>
+                                                </h3>
+                                                <h5>${product.price}</h5>
+                                                <div className="star">
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <i key={i} className={i < product.rating ? "fa-solid fa-star" : "fa-regular fa-star"} />
+                                                    ))}
+                                                </div>
+                                                <p>{product.description}</p>
+                                                <div className="shop-btn">
+                                                    <Link to={`/shop/${product.id}`} className="theme-btn">
+                                                        <i className="fa-solid fa-basket-shopping" /> Add To Cart
+                                                    </Link>
+                                                    <ul className="shop-icon d-flex">
+                                                        <li><a href="#"><i className="far fa-heart" /></a></li>
+                                                        <li><a href="#"><img className="icon" src="/src/assets/img/icon/shuffle.svg" alt="shuffle" /></a></li>
+                                                        <li><Link to={`/shop/${product.id}`}><i className="far fa-eye" /></Link></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Phân trang */}
+                            <div className="page-nav-wrap text-center">
+                                <ul>
+                                    <li><a className="previous" href="#">Previous</a></li>
+                                    <li><a className="page-numbers" href="#">1</a></li>
+                                    <li><a className="page-numbers" href="#">2</a></li>
+                                    <li><a className="page-numbers" href="#">3</a></li>
+                                    <li><a className="page-numbers" href="#">...</a></li>
+                                    <li><a className="next" href="#">Next</a></li>
+                                </ul>
+                            </div>
 
                         </div>
                     </div>
                 </div>
-
             </section>
         </>
-
-    )
+    );
 }

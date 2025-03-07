@@ -1,13 +1,12 @@
-interface Product {
-  id: string;
+export type Product = {
+  _id: string;
   title: string;
-  author: string;
   price: number;
-  oldPrice?: number;  // Có thể không có
-  discount?: number;  // Có thể không có
   image: string;
-  rating: number;
-}
+  description: string;
+  category: Category;
+  isShow: boolean;
+};
 
 export type Category = {
   _id: string;
@@ -34,3 +33,4 @@ export type Cart = {
   user: string;
   products: CartItem[];
 };
+ 

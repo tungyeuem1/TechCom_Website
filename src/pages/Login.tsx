@@ -12,8 +12,12 @@ export default function Login() {
                             <div className="identityBox">
                                 <div className="form-wrapper">
                                     <h1 id="loginModalLabel">welcome back!</h1>
-                                    <input className="inputField" type="email" name="email" placeholder="Email Address" />
-                                    <input className="inputField" type="password" name="password" placeholder="Enter Password"/>
+                                    <form>
+                                        <input className="inputField" type="email" name="email" placeholder="Email Address" />
+                                        <input className="inputField" type="password" name="password" placeholder="Enter Password"  />
+                                    </form>
+
+
                                     <div className="input-check remember-me">
                                         <div className="checkbox-wrapper">
                                             <input type="checkbox" className="form-check-input" name="save-for-next"
@@ -56,7 +60,7 @@ export default function Login() {
                                         data-bs-target="#registrationModal">Create
                                         Account</button>
                                     <div className="loginBg">
-                                        <img src="./src/assets/img/signUpbg.jpg" alt="signUpBg"/>
+                                        <img src="./src/assets/img/signUpbg.jpg" alt="signUpBg" />
                                     </div>
                                 </div>
                             </div>

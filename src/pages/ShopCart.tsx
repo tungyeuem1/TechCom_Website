@@ -1,8 +1,23 @@
+import { useMemo } from "react";
+import { useCart } from "../contexts/cart";
+import { useProductCart } from "../hooks/useProductCart";
 
 
 
 export default function ShopCart() {
+    const { cart } = useCart();
+    const { removeToCart } = useProductCart();
 
+    const totalPrice = useMemo(
+        () =>
+            cart
+                ? cart.products.reduce(
+                    (total, { product, quantity }) => total + product.price * quantity,
+                    0
+                )
+                : 0,
+        [cart]
+    );
 
     return (
         <>
@@ -35,117 +50,125 @@ export default function ShopCart() {
                 </div>
             </div>
             <div className="cart-section section-padding">
-        <div className="container">
-            <div className="main-cart-wrapper">
-                <div className="row g-5">
-                    <div className="col-xl-9">
-                        <div className="table-responsive">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span className="d-flex gap-5 align-items-center">
-                                                <a href="shop-cart.html" className="remove-icon">
-                                                    <img src="./src/assets/img/icon/icon-9.svg" alt="img"/>
-                                                </a>
-                                                <span className="cart">
-                                                    <img src="./src/assets/img/shop-cart/01.png" alt="img"/>
-                                                </span>
-                                                <span className="cart-title">
-                                                    simple Things You To Save Book
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span className="cart-price">$30.00</span>
-                                        </td>
-                                        <td>
-                                            <span className="quantity-basket">
-                                                <span className="qty">
-                                                    <button className="qtyminus" aria-hidden="true">−</button>
-                                                    <input type="number" name="qty" id="qty2" min="1" max="10" step="1"
-                                                        value="1"/>
-                                                    <button className="qtyplus" aria-hidden="true">+</button>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span className="subtotal-price">$120.00</span>
-                                        </td>
-                                    </tr>
-                                    
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="cart-wrapper-footer">
-                            <form action="https://gramentheme.com/html/bookle/shop-cart.html">
-                                <div className="input-area">
-                                    <input type="text" name="Coupon Code" id="CouponCode" placeholder="Coupon Code"/>
-                                    <button type="submit" className="theme-btn">
-                                        Apply
-                                    </button> 
+                <div className="container">
+                    <div className="main-cart-wrapper">
+                        <div className="row g-5">
+                            <div className="col-xl-9">
+                                <div className="table-responsive">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {cart?.products.map((item, index) => (
+                                                <tr>
+                                                    <td key={index}>
+                                                        <span className="d-flex gap-5 align-items-center">
+                                                            <button onClick={() => removeToCart(item.product._id)} className="remove-icon">
+                                                                <img src="./src/assets/img/icon/icon-9.svg" alt="remove" />
+                                                            </button>
+
+                                                            <span className="cart">
+                                                                <img src={item.product.image} alt={item.product.title} />
+                                                            </span>
+                                                            <span className="cart-title">
+                                                                {item.product.title}
+                                                            </span>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <td>
+                                                            <span className="cart-price">${item.product.price.toFixed(2)}</span>
+                                                        </td>
+
+                                                    </td>
+                                                    <td>
+                                                        <span className="quantity-basket">
+                                                            <span className="qty">
+                                                                <button className="qtyminus" aria-hidden="true">−</button>
+                                                                <input type="number" value={item.quantity} readOnly />
+                                                                <button className="qtyplus" aria-hidden="true">+</button>
+                                                            </span>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <td>
+                                                            <span className="subtotal-price">{totalPrice.toLocaleString()}</span>
+                                                        </td>
+
+                                                    </td>
+                                                </tr>
+                                            ))}
+
+
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </form>
-                            <a href="shop-cart.html" className="theme-btn">
-                                Update Cart
-                            </a>
-                        </div>
-                    </div>
-                    <div className="col-xl-3">
-                        <div className="table-responsive cart-total">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Cart Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span className="d-flex gap-5 align-items-center justify-content-between">
-                                                <span className="sub-title">Subtotal:</span>
-                                                <span className="sub-price">$84.00</span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span className="d-flex gap-5 align-items-center  justify-content-between">
-                                                <span className="sub-title">Shipping:</span>
-                                                <span className="sub-text">
-                                                    Free
-                                                </span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span className="d-flex gap-5 align-items-center  justify-content-between">
-                                                <span className="sub-title">Total:  </span>
-                                                <span className="sub-price sub-price-total">$84.00</span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="checkout.html" className="theme-btn">Proceed to checkout</a>
+                                <div className="cart-wrapper-footer">
+                                    <form action="https://gramentheme.com/html/bookle/shop-cart.html">
+                                        <div className="input-area">
+                                            <input type="text" name="Coupon Code" id="CouponCode" placeholder="Coupon Code" />
+                                            <button type="submit" className="theme-btn">
+                                                Apply
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a href="shop-cart.html" className="theme-btn">
+                                        Update Cart
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="col-xl-3">
+                                <div className="table-responsive cart-total">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Cart Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span className="d-flex gap-5 align-items-center justify-content-between">
+                                                        <span className="sub-title">Subtotal:</span>
+                                                        <span className="sub-price">$84.00</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span className="d-flex gap-5 align-items-center  justify-content-between">
+                                                        <span className="sub-title">Shipping:</span>
+                                                        <span className="sub-text">
+                                                            Free
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span className="d-flex gap-5 align-items-center  justify-content-between">
+                                                        <span className="sub-title">Total:  </span>
+                                                        <span className="sub-price sub-price-total">$84.00</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="checkout.html" className="theme-btn">Proceed to checkout</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-            
+
         </>
 
     )

@@ -6692,6 +6692,8 @@ span {
 }
 .shop-default-wrapper .shop-list-items .shop-list-thumb img {
   object-fit: cover;
+  width: 152px;
+  height: 211px;
 }
 .shop-default-wrapper .shop-list-items .shop-list-thumb .post-box {
   position: absolute;
