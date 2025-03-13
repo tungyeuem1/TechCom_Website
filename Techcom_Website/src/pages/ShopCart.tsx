@@ -7,6 +7,7 @@ import { useProductCart } from "../hooks/useProductCart";
 export default function ShopCart() {
     const { cart } = useCart();
     const { removeToCart } = useProductCart();
+    
 
     const totalPrice = useMemo(
         () =>
