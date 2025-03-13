@@ -3,7 +3,7 @@ import { getAllProduct } from "../services/Product";
 import toast from "react-hot-toast";
 
 interface Product {
-    id: string;
+    _id: string;
     title: string;
     author: string;
     price: number;
@@ -23,7 +23,6 @@ export default function HomePage() {
     useEffect(() => {
         getAllProduct()
             .then(({ data }) => {
-                toast.success("Dữ liệu tải thành công!");
                 setProducts(data);
             })
             .catch((error) => toast.error("Lỗi: " + error.message));
@@ -47,8 +46,8 @@ export default function HomePage() {
                             <div key={index} className="swiper-slide">
                                 <div className="shop-box-items style-2">
                                     <div className="book-thumb center">
-                                        <a href={`/shopdetail/${product.id}`}>
-                                            <img src={product.image} alt={product.title} />
+                                        <a href={`/shopdetail/${product._id}`}>
+                                            <img src={product.image} alt={product.title} style={{width:"152px", height:"211px"}}/>
                                         </a>
                                         <ul className="post-box">
                                         {product.rating1?.rate >= 4.5 && <li>Hot</li>}
@@ -64,13 +63,13 @@ export default function HomePage() {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href={`/shopdetail/${product.id}`}><i className="far fa-eye"></i></a>
+                                                <a href={`/shopdetail/${product._id}`}><i className="far fa-eye"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="shop-content">
                                         <h5>{product.author}</h5>
-                                        <h3><a href={`/shopdetail/${product.id}`}>{product.title}</a></h3>
+                                        <h3><a href={`/shopdetail/${product._id}`}>{product.title}</a></h3>
                                         <ul className="price-list">
                                             <li>${product.price}</li>
                                             {product.oldPrice && <li><del>${product.oldPrice}</del></li>}
@@ -90,7 +89,7 @@ export default function HomePage() {
                                         </ul>
                                     </div>
                                     <div className="shop-button">
-                                        <a href={`/shopdetail/${product.id}`} className="theme-btn">
+                                        <a href={`/shopdetail/${product._id}`} className="theme-btn">
                                             <i className="fa-solid fa-basket-shopping"></i> Add To Cart
                                         </a>
                                     </div>

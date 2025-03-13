@@ -1,12 +1,23 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useCart } from "../contexts/cart";
 import Login from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Badge } from "@mui/material";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export function Header() {
     const { cart } = useCart();
+    const username = localStorage.getItem('username');
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+
+    const handleLogout = () => {
+        localStorage.clear();
+        setIsLoggedIn(false);
+        toast.success("Bạn đã đăng xuất tài khoản!");
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+    };
 
     const cartQuantity = useMemo(
         () =>
@@ -114,16 +125,45 @@ export function Header() {
                         </ul>
                         <ul className="list">
                             <li><i className="fa-light fa-comments"></i><a href="contact.html">Live Chat</a></li>
-                            <li><i className="fa-light fa-user"></i>
+                            <li className="nav-item dropdown d-flex align-items-center">
+                                <i className="fa-light fa-user "></i>
 
+                                {isLoggedIn ? (
+                                    <>
+                                        <a
+                                            className="nav-link dropdown-toggle p-0"
+                                            href="#"
+                                            id="userDropdown"
+                                            role="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            {username}
+                                        </a>
 
-
-                                <button data-bs-toggle="modal" data-bs-target="#loginModal">
-                                    Login
-                                </button>
-
-
+                                        <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                            <li>
+                                                <a className="dropdown-item" href="#">
+                                                    <i className="bi bi-person-circle me-2"></i>Thông tin tài khoản
+                                                </a>
+                                            </li>
+                                            <li><hr className="dropdown-divider" /></li>
+                                            <li>
+                                                <a className="dropdown-item text-danger" onClick={handleLogout} style={{ cursor: "pointer" }}>
+                                                    <i className="bi bi-box-arrow-right me-2"></i>Đăng xuất
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </>
+                                ) : (
+                                    <button  data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        Login
+                                    </button>
+                                )}
                             </li>
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -164,7 +204,6 @@ export function Header() {
                                                             <ul className="submenu">
                                                                 <li><a href="/shop">Shop Default</a></li>
                                                                 <li><a href="/shoplist">Shop List</a></li>
-                                                                <li><a href="/shopdetail/:id">Shop Details</a></li>
                                                                 <li><a href="/shopcart">Shop Cart</a></li>
                                                                 <li><a href="/wishlist">Wishlist</a></li>
                                                                 <li><a href="/checkout">Checkout</a></li>
@@ -247,13 +286,15 @@ export function Header() {
                                             <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <Link to={"/shopcart"} className="cart-icon">
-                                                <Badge badgeContent={cartQuantity} color="secondary">
-                                                <i className="fa-regular fa-cart-shopping"></i>
-                                                </Badge>
-                                            </Link>
+                                            <Badge badgeContent={cartQuantity} color="secondary">
+                                                <a href="/shopcart" className="cart-icon">
+
+                                                    <i className="fa-regular fa-cart-shopping"></i>
+
+                                                </a>
+                                            </Badge>
                                             <div className="header-humbager ml-30">
-                                                <a className="sidebar__toggle" href="javascript:void(0)">
+                                                <a className="sidebar__toggle" >
                                                     <div className="bar-icon-2">
                                                         <img src="/src/assets/img/icon/icon-13.svg" alt="img" />
                                                     </div>
@@ -305,7 +346,6 @@ export function Header() {
                                                             <ul className="submenu">
                                                                 <li><a href="/shop">Shop Default</a></li>
                                                                 <li><a href="/shoplist">Shop List</a></li>
-                                                                <li><a href="/shopdetail/:id">Shop Details</a></li>
                                                                 <li><a href="/shopcart">Shop Cart</a></li>
                                                                 <li><a href="/wishlist">Wishlist</a></li>
                                                                 <li><a href="/checkout">Checkout</a></li>
@@ -388,13 +428,15 @@ export function Header() {
                                             <a href="wishlist" className="cart-icon">
                                                 <i className="fa-regular fa-heart"></i>
                                             </a>
-                                            <Link to={"/shopcart"} className="cart-icon">
-                                                <Badge badgeContent={cartQuantity} color="secondary">
-                                                <i className="fa-regular fa-cart-shopping"></i>
-                                                </Badge>
-                                            </Link>
+                                            <Badge badgeContent={cartQuantity} color="secondary">
+                                                <a href="/shopcart" className="cart-icon">
+
+                                                    <i className="fa-regular fa-cart-shopping"></i>
+
+                                                </a>
+                                            </Badge>
                                             <div className="header-humbager ml-30">
-                                                <a className="sidebar__toggle" href="javascript:void(0)">
+                                                <a className="sidebar__toggle" >
                                                     <div className="bar-icon-2">
                                                         <img src="/src/assets/img/icon/icon-13.svg" alt="img" />
                                                     </div>

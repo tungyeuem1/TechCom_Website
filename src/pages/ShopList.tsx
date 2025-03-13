@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 
 // Định nghĩa kiểu dữ liệu của sản phẩm
 interface Product {
-    id: string;
+    _id: string;
     title: string;
+    author: string;
     price: number;
+    oldPrice?: number;  // Có thể không có
+    discount?: number;  // Có thể không có
     image: string;
     rating: number;
-    description: string;
+    rating1: {
+        rate: number;
+        count: number;
+    };
 }
 
 export default function ShopList() {
@@ -57,7 +63,7 @@ export default function ShopList() {
 
                             <div className="row">
                                 {products.map((product) => (
-                                    <div className="col-lg-12" key={product.id}>
+                                    <div className="col-lg-12" key={product._id}>
                                         <div className="shop-list-items">
                                             <div className="shop-list-thumb">
                                                 <img src={product.image} alt={product.title} />
@@ -70,7 +76,7 @@ export default function ShopList() {
 
                                             <div className="shop-list-content">
                                                 <h3>
-                                                    <Link to={`/shop/${product.id}`}>{product.title}</Link>
+                                                    <Link to={`/shopdetail/${product._id}`}>{product.title}</Link>
                                                 </h3>
                                                 <h5>${product.price}</h5>
                                                 <div className="star">
@@ -80,13 +86,13 @@ export default function ShopList() {
                                                 </div>
                                                 <p>{product.description}</p>
                                                 <div className="shop-btn">
-                                                    <Link to={`/shop/${product.id}`} className="theme-btn">
+                                                    <Link to={`/shopdetail/${product._id}`} className="theme-btn">
                                                         <i className="fa-solid fa-basket-shopping" /> Add To Cart
                                                     </Link>
                                                     <ul className="shop-icon d-flex">
                                                         <li><a href="#"><i className="far fa-heart" /></a></li>
                                                         <li><a href="#"><img className="icon" src="/src/assets/img/icon/shuffle.svg" alt="shuffle" /></a></li>
-                                                        <li><Link to={`/shop/${product.id}`}><i className="far fa-eye" /></Link></li>
+                                                        <li><Link to={`/shopdetail/${product._id}`}><i className="far fa-eye" /></Link></li>
                                                     </ul>
                                                 </div>
                                             </div>

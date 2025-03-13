@@ -12,11 +12,12 @@ import AddIcon from "@mui/icons-material/Remove";
 
 export default function ShopDetail() {
   const { addToCart } = useProductCart();
-  const { id } = useParams(); // Lấy id sản phẩm từ URL
+  const { id } = useParams(); 
   const [product, setProduct] = useState<Product | undefined>();
   const [quantity, setQuantity] = useState<number>(1);
   const getProduct = async (id: string) => {
     try {
+      console.log(`🔍 Fetching product with ID: ${id}`);
       const { data } = await axios.get(`/products/${id}`);
       setProduct(data);
     } catch (error) {
@@ -31,6 +32,11 @@ export default function ShopDetail() {
   const handleAddToCart = (product: Product) => {
     if (quantity <= 0) return;
     addToCart({ product, quantity });
+    
+  }
+  if (!product) {
+    console.error("Sản phẩm không tồn tại!"); 
+    return;
   };
   return (
     <>
@@ -67,7 +73,7 @@ export default function ShopDetail() {
                   <div className="tab-content">
                     <div className="tab-pane fade show active">
                       <div className="shop-details-thumb">
-                        <img src={product?.image} alt={product?.title} />
+                        <img src={product?.image} alt={product?.title} style={{width:"315px", height:"402px"}}/>
                       </div>
                     </div>
                   </div>
@@ -165,7 +171,7 @@ export default function ShopDetail() {
                         </div>
                       </div>
                     </div>
-                    <a   onClick={() => handleAddToCart(product)} className="theme-btn">
+                    <a onClick={() => handleAddToCart(product)} className="theme-btn">
                       <i className="fa-solid fa-basket-shopping" /> Add To Cart
                     </a>
                     <div className="icon-box">

@@ -6,8 +6,7 @@ import Shop from "./pages/Shop";
 import ShopList from "./pages/ShopList";
 import ShopDetail from "./pages/ShopDetail";
 import ShopCart from "./pages/ShopCart";
-import { UserProvider } from "./contexts/user";
-import { CartProvider } from "./contexts/cart";
+
 import Wishlist from "./pages/wishlist";
 
 function App() {
@@ -33,14 +32,12 @@ function App() {
     ]);
 
     return (
-        <UserProvider>  {/* ✅ Bọc toàn bộ ứng dụng trong UserProvider */}
-            <CartProvider>
+      
                 <main>
                     {routes}
                     <Toaster />
                 </main>
-            </CartProvider>
-        </UserProvider>
+           
     );
 }
 

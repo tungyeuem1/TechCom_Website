@@ -10,14 +10,14 @@ export default function ShopCart() {
 
     const totalPrice = useMemo(
         () =>
-            cart
-                ? cart.products.reduce(
-                    (total, { product, quantity }) => total + product.price * quantity,
-                    0
-                )
-                : 0,
+          cart
+            ? cart.products.reduce(
+                (total, { product, quantity }) => total + product.price * quantity,
+                0
+              )
+            : 0,
         [cart]
-    );
+      );
 
     return (
         <>
@@ -74,7 +74,7 @@ export default function ShopCart() {
                                                             </button>
 
                                                             <span className="cart">
-                                                                <img src={item.product.image} alt={item.product.title} />
+                                                                <img src={item.product.image} alt={item.product.title} style={{width:"52px", height:"px"}} />
                                                             </span>
                                                             <span className="cart-title">
                                                                 {item.product.title}
@@ -83,7 +83,7 @@ export default function ShopCart() {
                                                     </td>
                                                     <td>
                                                         <td>
-                                                            <span className="cart-price">${item.product.price.toFixed(2)}</span>
+                                                            <span className="cart-price">${item.product.price}</span>
                                                         </td>
 
                                                     </td>
@@ -98,7 +98,7 @@ export default function ShopCart() {
                                                     </td>
                                                     <td>
                                                         <td>
-                                                            <span className="subtotal-price">{totalPrice.toLocaleString()}</span>
+                                                            <span className="subtotal-price">${totalPrice.toLocaleString()}</span>
                                                         </td>
 
                                                     </td>
@@ -154,7 +154,7 @@ export default function ShopCart() {
                                                 <td>
                                                     <span className="d-flex gap-5 align-items-center  justify-content-between">
                                                         <span className="sub-title">Total:  </span>
-                                                        <span className="sub-price sub-price-total">$84.00</span>
+                                                        <span className="sub-price sub-price-total"></span>
                                                     </span>
                                                 </td>
                                             </tr>

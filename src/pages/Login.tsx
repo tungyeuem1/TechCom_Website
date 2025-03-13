@@ -1,4 +1,34 @@
+import { useProductCart } from "../hooks/useProductCart";
+import { useForm, SubmitHandler } from "react-hook-form";
+import {    LoginUser, User } from "../services/Auth";
+import toast from "react-hot-toast";
+
 export default function Login() {
+    const { getCartUser } = useProductCart();
+    const { register, handleSubmit, formState: { errors } } = useForm<User>();
+
+    const handleLogin: SubmitHandler<User> = (values) => {
+        LoginUser(values)
+          .then(({ data }) => {
+            console.log("Login response data:", data); 
+            console.log(localStorage.getItem("user"));
+            
+
+            toast.success("Đăng nhập thành công");
+            console.log("Token:", data.token);
+            localStorage.setItem("token", data.token); 
+            localStorage.setItem("username", data.username); 
+            
+            localStorage.setItem("user", JSON.stringify(data.user ));
+
+            
+            getCartUser()
+            window.location.reload();
+          })
+          .catch((error) => {
+            toast.error("Error: " + error.message);
+          });
+      };
     return (
 
         <>
@@ -12,23 +42,42 @@ export default function Login() {
                             <div className="identityBox">
                                 <div className="form-wrapper">
                                     <h1 id="loginModalLabel">welcome back!</h1>
-                                    <form>
-                                        <input className="inputField" type="email" name="email" placeholder="Email Address" />
-                                        <input className="inputField" type="password" name="password" placeholder="Enter Password"  />
-                                    </form>
+                                    <form onSubmit={handleSubmit(handleLogin)}>
+                                    <input
+                                        className="inputField"
+                                        type="email"
+                                        placeholder="Email Address"
+                                        {...register("email", { required: "Email không được để trống" })}
+                                    />
+                                    {errors.email && <span className="error">{errors.email.message}</span>}
 
+                                    <input
+                                        className="inputField"
+                                        type="password"
+                                        placeholder="Enter Password"
+                                        {...register("password", {
+                                            required: "Password is required",
+                                            minLength: {
+                                              value: 6,
+                                              message: "Minimum 6 Characters required",
+                                            },
+                                          })}
+                                        />
+                                        {errors?.password && (
+                                          <small className="text-danger">{errors.password.message}</small>
+                                        )}
 
                                     <div className="input-check remember-me">
                                         <div className="checkbox-wrapper">
-                                            <input type="checkbox" className="form-check-input" name="save-for-next"
-                                                id="saveForNext" />
+                                            <input type="checkbox" className="form-check-input" id="saveForNext" />
                                             <label htmlFor="saveForNext">Remember me</label>
                                         </div>
-                                        <div className="text"> <a href="index-2.html">Forgot Your password?</a> </div>
                                     </div>
+
                                     <div className="loginBtn">
-                                        <a href="index-2.html" className="theme-btn rounded-0"> Log in </a>
+                                        <button type="submit" className="theme-btn rounded-0">Log in</button>
                                     </div>
+                                </form>
                                     <div className="orting-badge">
                                         Or
                                     </div>

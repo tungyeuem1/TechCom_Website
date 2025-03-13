@@ -2483,7 +2483,6 @@ span {
   position: absolute;
   top: -7px;
   left: 0;
-  content: "0";
   width: 18px;
   line-height: 18px;
   height: 18px;
@@ -8114,3 +8113,8 @@ span {
 .testimonial-slider .swiper-slide-active .testimonial-card-items .client-info .client-img .icon .shape {
   filter: invert(23%) sepia(96%) saturate(2210%) hue-rotate(170deg) brightness(95%) contrast(103%);
 }/*# sourceMappingURL=main.css.map */
+.user-info {
+  display: flex;
+  align-items: center; /* Căn giữa icon và username */
+  gap: 10px; /* Khoảng cách giữa icon và username */
+}
