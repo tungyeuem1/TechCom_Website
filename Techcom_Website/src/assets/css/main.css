@@ -2054,7 +2054,7 @@ span {
     gap: 50px;
   }
 }
-@media (max-width: 1199px) {
+@media (max-width: 1599px) {
   .header-1 .header-left {
     gap: 105px;
   }

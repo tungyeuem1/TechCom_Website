@@ -37,7 +37,7 @@ export function Header() {
                             <div className="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                                 <div className="offcanvas__logo">
                                     <a href="index.html">
-                                        <img src="./src/assets/img/logo/black-logo.svg" alt="logo-img" />
+                                        <img src="./src/assets/img/logo/logo.png" alt="logo-img" />
                                     </a>
                                 </div>
                                 <div className="offcanvas__close">
@@ -179,7 +179,7 @@ export function Header() {
                                     <div className="header-left">
                                         <div className="logo">
                                             <a href="/" className="header-logo">
-                                                <img src="/src/assets/img/logo/white-logo.svg" alt="logo-img" />
+                                                <img src="/src/assets/img/logo/" alt="logo-img" />
                                             </a>
                                         </div>
                                         <div className="mean__menu-wrapper">
@@ -321,7 +321,7 @@ export function Header() {
                                     <div className="header-left">
                                         <div className="logo">
                                             <a href="/" className="header-logo">
-                                                <img src="/src/assets/img/logo/white-logo.svg" alt="logo-img" />
+                                                <img src="/src/assets/img/logo/" alt="logo-img" />
                                             </a>
                                         </div>
                                         <div className="mean__menu-wrapper">

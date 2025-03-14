@@ -61,7 +61,7 @@ export function Footer() {
                         <div className="single-footer-widget">
                             <div className="widget-head">
                                 <a href="index.html">
-                                    <img src="./src/assets/img/logo/white-logo.svg" alt="logo-img"/>
+                                    <img src="./src/assets/img/logo/" alt="logo-img"/>
                                 </a>
                             </div>
                             <div className="footer-content">

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Sidebar } from "../components/sidebarShop";
 
 interface Product {
-    id: string;
+    _id: string;
     title: string;
     author: string;
     price: number;
@@ -33,10 +33,10 @@ export default function Shop() {
         <>
             <div className="breadcrumb-wrapper">
                 <div className="book1">
-                    <img src="./src/assets/img/hero/book1.png" alt="book" />
+                    <img src="./src/assets/img/hero/maytinh1.png" alt="book" style={{width:"402px", height:"305px"}}/>
                 </div>
                 <div className="book2">
-                    <img src="./src/assets/img/hero/book2.png" alt="book" />
+                    <img src="./src/assets/img/hero/maytinh2.png" alt="book" style={{width:"402px", height:"280px"}}/>
                 </div>
                 <div className="container">
                     <div className="page-heading">
@@ -74,7 +74,7 @@ export default function Shop() {
                                                 <div key={index} className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                                                     <div className="shop-box-items">
                                                         <div className="book-thumb center">
-                                                            <a href={`/shopdetail/${product.id}`}>
+                                                            <a href={`/shopdetail/${product._id}`}>
                                                                 <img src={product.image} alt={product.title} />
                                                             </a>
                                                             <ul className="post-box">
@@ -92,12 +92,12 @@ export default function Shop() {
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href={`/shop-details/${product.id}`}><i className="far fa-eye"></i></a>
+                                                                    <a href={`/shopdetail/${product._id}`}><i className="far fa-eye"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         <div className="shop-content">
-                                                            <h3><a href={`/shop-details/${product.id}`}>{product.title}</a></h3>
+                                                            <h3><a href={`/shopdetail/${product._id}`}>{product.title}</a></h3>
                                                             <ul className="price-list">
                                                                 <li>${product.price}</li>
                                                                 <li>
@@ -106,7 +106,7 @@ export default function Shop() {
                                                                 </li>
                                                             </ul>
                                                             <div className="shop-button">
-                                                                <a href="#" className="theme-btn">
+                                                                <a href={`/shopdetail/${product._id}`} className="theme-btn">
                                                                     <i className="fa-solid fa-basket-shopping"></i> Add To Cart
                                                                 </a>
                                                             </div>

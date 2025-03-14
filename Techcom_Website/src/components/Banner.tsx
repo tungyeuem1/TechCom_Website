@@ -8,7 +8,7 @@ export function Banner() {
                         <div className="col-12 col-xl-8 col-lg-6">
                             <div className="hero-items">
                                 <div className="book-shape">
-                                    <img src="./src/assets/img/hero/book.png" alt="shape-img" />
+                                    <img src="./src/assets/img/hero/techcom.png" alt="shape-img" style={{width:"216px", height:"165px"}}/>
                                 </div>
                                 <div className="frame-shape1 float-bob-x">
                                     <img src="./src/assets/img/hero/frame.png" alt="shape-img" />
@@ -30,7 +30,7 @@ export function Banner() {
                                 </div>
                                 <div className="hero-content">
                                     <h6 className="wow fadeInUp" data-wow-delay=".3s">Up to 30% Off</h6>
-                                    <h1 className="wow fadeInUp" data-wow-delay=".5s">Get Your New Book <br /> With The Best Price
+                                    <h1 className="wow fadeInUp" data-wow-delay=".5s">Get Your New Product <br /> With The Best Price
                                     </h1>
                                     <div className="form-clt wow fadeInUp" data-wow-delay=".9s">
                                         <button type="submit" className="theme-btn">
@@ -43,7 +43,7 @@ export function Banner() {
                         </div>
                         <div className="col-12 col-xl-4 col-lg-6">
                             <div className="girl-image">
-                                <img className=" float-bob-x" src="./src/assets/img/hero/hero-girl.png" alt="img" />
+                                <img className=" float-bob-x" src="./src/assets/img/hero/banner.png" alt="img" style={{width:"589px", height:"743px"}} />
                             </div>
                         </div>
                     </div>

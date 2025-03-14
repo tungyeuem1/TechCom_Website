@@ -33,7 +33,7 @@ export default function HomePage() {
             <div className="container">
                 <div className="section-title-area">
                     <div className="section-title">
-                        <h2 className="wow fadeInUp" data-wow-delay=".3s">Featured Books</h2>
+                        <h2 className="wow fadeInUp" data-wow-delay=".3s">Featured Products</h2>
                     </div>
                     <a href="shop" className="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
                         Explore More <i className="fa-solid fa-arrow-right-long"></i>
