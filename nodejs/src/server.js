@@ -13,7 +13,7 @@ app.use(
 );
 app.use(express.json());
 
-const dbUrl = process.env.DB_URI || "mongodb://127.0.0.1:27017/Techcom_Website";
+const dbUrl = process.env.DB_URI || "mongodb+srv://tungyeuem512004:clone12345@techcom.9wrmo.mongodb.net/?retryWrites=true&w=majority&appName=TechCom";
 
 connectMongoDB(dbUrl);
 
