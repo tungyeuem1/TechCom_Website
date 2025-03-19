@@ -35,7 +35,7 @@ export default function ShopDetail() {
     
   }
   if (!product) {
-    console.error("Sản phẩm không tồn tại!"); 
+    console.error("Sản phẩm không tồn tại!");     
     return;
   };
   return (
