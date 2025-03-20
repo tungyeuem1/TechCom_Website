@@ -13,7 +13,7 @@ app.use(
 );
 app.use(express.json());
 
-const dbUrl = process.env.DB_URI || "mongodb+srv://root:123@cluster0.iki6m.mongodb.net/Tech_Ư?retryWrites=true&w=majority&appName=Cluster0";
+const dbUrl = process.env.DB_URI || "mongodb+srv://root:123@cluster0.iki6m.mongodb.net/Tech_Website?retryWrites=true&w=majority&appName=Cluster0";
 
 connectMongoDB(dbUrl);
 

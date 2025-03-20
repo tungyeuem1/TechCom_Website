@@ -21,23 +21,23 @@ const ProductSchema = new Schema(
     },
     author: {
       type: String,
-      required: true,
+      required: false,
     },
     rating: {
       type: Number,
-      required: true,
+      required: false,
     },
     rating1: {
-      rate: { type: Number, required: true },
-      count: { type: Number, required: true }
+      rate: { type: Number, required: false },
+      count: { type: Number, required: false}
     },
     format: {
       type: String,
-      required: true,
+      required: false,
     },
     discount: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   {

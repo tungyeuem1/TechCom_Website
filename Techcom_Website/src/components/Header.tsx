@@ -126,7 +126,9 @@ export function Header() {
                         <ul className="list">
                             <li><i className="fa-light fa-comments"></i><a href="contact.html">Live Chat</a></li>
                             <li className="nav-item dropdown d-flex align-items-center">
-                                <i className="fa-light fa-user "></i>
+                               <a href="admin/product/list">
+                               <i className="fa-light fa-user "></i>
+                               </a>
 
                                 {isLoggedIn ? (
                                     <>
