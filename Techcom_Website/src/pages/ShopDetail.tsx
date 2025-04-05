@@ -83,7 +83,7 @@ export default function ShopDetail() {
                 <div className="shop-details-content">
                   <h2>{product?.title}</h2>
                   <p>{product?.description}</p>
-                  <h3>${product?.price}</h3>
+                  <h3>${product?.price.toLocaleString()}</h3>
 
                   {/* Thêm vào giỏ hàng */}
                   <div className="cart-wrapper">

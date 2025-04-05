@@ -1,11 +1,14 @@
 import axios from "axios";
 export type Product = {
-    _id:number,
-    title:string,
-    image:string,
-    description:string,
-    price:number,
-}
+  _id: number; // MongoDB thường dùng string thay vì number
+  title: string;
+  image: string;
+  description: string;
+  price: number;
+  category?: string;
+  discount?: number;
+  featured?: boolean;
+};
 type Products = {
     title: string;
     image:string
@@ -28,3 +31,4 @@ export const deleteProduct = (id: number) => {
   export const editProductDetail = (id: string, data: Products) => {
     return axios.put("/products/" + id, data);
   };
+  

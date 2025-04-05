@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { deleteProduct, getAllProduct, Product } from "../../services/Product";
+import { Category, deleteCategory, getAllCategory } from "../../services/Category";
 
 
-export default function ProductList() {
+export default function CategoryList() {
   
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<[Category]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    getAllProduct()
+    getAllCategory()
       .then(({ data }) => {
-        toast.success("Sản phẩm đã được tải thành công");
+        toast.success("Danh mục đã được tải thành công");
         setProducts(data);
       })
       .catch((error) => toast.error("Lỗi: " + error.message))
@@ -21,7 +21,7 @@ export default function ProductList() {
 
   const handleDeleteProduct = (id: number) => {
     if (window.confirm("Bạn có chắc muốn xoá sản phẩm này không?")) {
-      deleteProduct(id)
+      deleteCategory(id)
         .then(() => {
           toast.success(`Xoá sản phẩm Id: ${id} thành công`);
          
@@ -37,11 +37,9 @@ export default function ProductList() {
     <div className="container">
       <a href="/">
       <button className="btn btn-outline-primary">Home</button></a>
-      <a href="/admin/category/list">
-      <button className="btn btn-outline-primary">Danh muc</button></a>
       <h1>Danh sách sản phẩm</h1>
-      <Link to="/admin/product/add">
-        <button className="btn btn-outline-primary">Add Product</button>
+      <Link to="/admin/category/add">
+        <button className="btn btn-outline-primary">Add Category</button>
       </Link>
       {loading && (
         <div className="d-flex justify-content-center">
@@ -54,11 +52,8 @@ export default function ProductList() {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tiêu đề</th>
-            <th scope="col">Giá</th>
-            <th scope="col">Hình ảnh</th>
-            <th scope="col">Mô tả</th>
-            <th scope="col">Category</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
             <th scope="col">Thao tác</th>
           </tr>
         </thead>
@@ -66,15 +61,12 @@ export default function ProductList() {
           {products.map((product, index) => (
             <tr key={index}>
               <th scope="row">{index +1}</th>
-              <td>{product.title}</td>
-              <td>{product.price} VND</td>
+              <td>{product.name}</td>
+              <td>{product.description} VND</td>
+              
+              
               <td>
-                <img src={product.image} alt="" width={80} />
-              </td>
-              <td>{product.description}</td>
-              <td>{product.category}</td>
-              <td>
-                <Link to={`/admin/product/edit/${product._id}`}>
+                <Link to={`/admin/category/edit/${product._id}`}>
                   <button className="btn btn-outline-danger">Edit</button>
                 </Link>
                 <button

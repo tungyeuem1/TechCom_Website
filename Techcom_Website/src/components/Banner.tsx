@@ -8,7 +8,7 @@ export function Banner() {
                         <div className="col-12 col-xl-8 col-lg-6">
                             <div className="hero-items">
                                 <div className="book-shape">
-                                    <img src="./src/assets/img/hero/techcom.png" alt="shape-img" style={{width:"216px", height:"165px"}}/>
+                                    <img src="./src/assets/img/hero/techcom.png" alt="shape-img" style={{ width: "216px", height: "165px" }} />
                                 </div>
                                 <div className="frame-shape1 float-bob-x">
                                     <img src="./src/assets/img/hero/frame.png" alt="shape-img" />
@@ -33,9 +33,13 @@ export function Banner() {
                                     <h1 className="wow fadeInUp" data-wow-delay=".5s">Get Your New Product <br /> With The Best Price
                                     </h1>
                                     <div className="form-clt wow fadeInUp" data-wow-delay=".9s">
-                                        <button type="submit" className="theme-btn">
-                                            Shop Now <i className="fa-solid fa-arrow-right-long"></i>
-                                        </button>
+                                        <a href="/shop">
+                                            <button type="submit" className="theme-btn">
+
+                                                Shop Now <i className="fa-solid fa-arrow-right-long"></i>
+
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -43,7 +47,7 @@ export function Banner() {
                         </div>
                         <div className="col-12 col-xl-4 col-lg-6">
                             <div className="girl-image">
-                                <img className=" float-bob-x" src="./src/assets/img/hero/banner.png" alt="img" style={{width:"589px", height:"743px"}} />
+                                <img className=" float-bob-x" src="./src/assets/img/hero/banner.png" alt="img" style={{ width: "589px", height: "743px" }} />
                             </div>
                         </div>
                     </div>

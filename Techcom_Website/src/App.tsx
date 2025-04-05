@@ -13,6 +13,12 @@ import ProductAdd from "./pages/admins/ProductAdd";
 import ProductEdit from "./pages/admins/ProductEdit";
 import PrivateRoute from "./components/PrivateRoute";
 import AdminLayout from "./layouts/AdminLayout";
+import CategoryList from "./pages/admins/categoryList";
+import CategoryAdd from "./pages/admins/categoryAdd";
+import CategoryEdit from "./pages/admins/categoryEdit";
+import Checkout from "./pages/Checkout";
+import OrderList from "./pages/OderList";
+import SearchPage from "./pages/searchPage";
 
 function App() {
     const isAuthenticated = localStorage.getItem("token") !== null;
@@ -24,6 +30,7 @@ function App() {
             element: <ClientLayout />,
             children: [
                 { path: "", element: <HomePage /> },
+                { path: "/search", element: <SearchPage /> },
             ]
         },
         {
@@ -35,6 +42,9 @@ function App() {
                 { path: "/shopdetail/:id", element: <ShopDetail /> },
                 { path: "/shopcart", element: <ShopCart /> },
                 { path: "/wishlist", element: <Wishlist /> },
+                { path: "/checkout", element: <Checkout /> },
+                { path: "/orders", element: <OrderList /> },
+                //{ path: "/category/:categoryName", element: <CategoryPage /> },
             ]
         },
 
@@ -48,8 +58,11 @@ function App() {
 
             children: [
                 { path: "product/list", element: <ProductList /> },
+                { path: "category/list", element: <CategoryList /> },
                 { path: "product/add", element: <ProductAdd /> },
+                { path: "category/add", element: <CategoryAdd /> },
                 { path: "product/edit/:id", element: <ProductEdit /> },
+                { path: "category/edit/:id", element: <CategoryEdit /> },
 
             ],
         },

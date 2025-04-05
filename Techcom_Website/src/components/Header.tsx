@@ -1,14 +1,50 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCart } from "../contexts/cart";
 import Login from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Badge } from "@mui/material";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
     const { cart } = useCart();
     const username = localStorage.getItem('username');
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+    const [category, setCategory] = useState("");
+    const [categories, setCategories] = useState<{ _id: string; name: string }[]>([]);
+    const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/categories");
+                const data = await response.json();
+                console.log("Dữ liệu danh mục từ API:", data);
+                setCategories(data);
+            } catch (error) {
+                console.error("Lỗi khi lấy danh mục:", error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedCategoryId = e.target.value;
+        setCategory(selectedCategoryId);
+        if (selectedCategoryId) {
+            navigate(`/category/${selectedCategoryId}`); // Chuyển hướng đến trang danh mục
+        }
+    };
+
+    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (search.trim()) {
+            navigate(`/search?keyword=${encodeURIComponent(search)}`);
+
+        }
+    };
 
     const handleLogout = () => {
         localStorage.clear();
@@ -126,12 +162,12 @@ export function Header() {
                         <ul className="list">
                             <li><i className="fa-light fa-comments"></i><a href="contact.html">Live Chat</a></li>
                             <li className="nav-item dropdown d-flex align-items-center">
-                               <a href="admin/product/list">
-                               <i className="fa-light fa-user "></i>
-                               </a>
-
                                 {isLoggedIn ? (
                                     <>
+                                        {/* Nếu đã đăng nhập, cho phép vào trang admin */}
+                                        <a href="/admin/product/list">
+                                            <i className="fa-light fa-user"></i>
+                                        </a>
                                         <a
                                             className="nav-link dropdown-toggle p-0"
                                             href="#"
@@ -158,9 +194,22 @@ export function Header() {
                                         </ul>
                                     </>
                                 ) : (
-                                    <button  data-bs-toggle="modal" data-bs-target="#loginModal">
-                                        Login
-                                    </button>
+                                    <>
+                                        {/* Nếu chưa đăng nhập, không cho vào trang admin, thay vào đó mở modal login */}
+                                        <button
+                                            type="button"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#loginModal"
+                                            className="btn btn-link p-0"
+                                            style={{ border: "none", background: "none" }}
+                                        >
+                                            <i className="fa-light fa-user"></i>
+                                        </button>
+
+                                        <button data-bs-toggle="modal" data-bs-target="#loginModal" >
+                                            Login
+                                        </button>
+                                    </>
                                 )}
                             </li>
 
@@ -254,30 +303,27 @@ export function Header() {
                                 </div>
                                 <div className="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                                     <div className="header-right">
-                                        <div className="category-oneadjust gap-6 d-flex align-items-center">
+                                    <div className="category-oneadjust gap-6 d-flex align-items-center">
                                             <div className="icon">
                                                 <i className="fa-sharp fa-solid fa-grid-2"></i>
                                             </div>
-                                            <select name="cate" className="category">
-                                                <option value="1">
-                                                    Category
-                                                </option>
-                                                <option value="1">
-                                                    Web Design
-                                                </option>
-                                                <option value="1">
-                                                    Web Development
-                                                </option>
-                                                <option value="1">
-                                                    Graphic Design
-                                                </option>
-                                                <option value="1">
-                                                    Softwer Eng
-                                                </option>
-                                            </select>
-                                            <form action="#" className="search-toggle-box d-md-block">
+                                            {categories.length > 0 ? (
+                                                <select className="nice-select" value={category} onChange={handleCategoryChange}>
+                                                    <option value="">Chọn danh mục</option>
+                                                    {categories.map((cate) => (
+                                                        <option key={cate._id} value={cate.name}>
+                                                            {cate.name}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            ) : (
+                                                <p>Đang tải danh mục...</p>
+                                            )}
+                                            <form onSubmit={handleSearch} action="#" className="search-toggle-box d-md-block">
                                                 <div className="input-area">
-                                                    <input type="text" placeholder="Author" />
+                                                    <input type="text" placeholder="Tìm kiếm sách..."
+                                                        value={search}
+                                                        onChange={(e) => setSearch(e.target.value)} />
                                                     <button className="cmn-btn">
                                                         <i className="far fa-search"></i>
                                                     </button>
@@ -396,30 +442,27 @@ export function Header() {
                                 </div>
                                 <div className="col-6 col-md-6 col-lg-2 col-xl-4 col-xxl-2">
                                     <div className="header-right">
-                                        <div className="category-oneadjust gap-6 d-flex align-items-center">
+                                    <div className="category-oneadjust gap-6 d-flex align-items-center">
                                             <div className="icon">
                                                 <i className="fa-sharp fa-solid fa-grid-2"></i>
                                             </div>
-                                            <select name="cate" className="category">
-                                                <option value="1">
-                                                    Category
-                                                </option>
-                                                <option value="1">
-                                                    Web Design
-                                                </option>
-                                                <option value="1">
-                                                    Web Development
-                                                </option>
-                                                <option value="1">
-                                                    Graphic Design
-                                                </option>
-                                                <option value="1">
-                                                    Softwer Eng
-                                                </option>
-                                            </select>
-                                            <form action="#" className="search-toggle-box d-md-block">
+                                            {categories.length > 0 ? (
+                                                <select className="nice-select" value={category} onChange={handleCategoryChange}>
+                                                    <option value="">Chọn danh mục</option>
+                                                    {categories.map((cate) => (
+                                                        <option key={cate._id} value={cate.name}>
+                                                            {cate.name}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            ) : (
+                                                <p>Đang tải danh mục...</p>
+                                            )}
+                                            <form onSubmit={handleSearch} action="#" className="search-toggle-box d-md-block">
                                                 <div className="input-area">
-                                                    <input type="text" placeholder="Author" />
+                                                    <input type="text" placeholder="Tìm kiếm sách..."
+                                                        value={search}
+                                                        onChange={(e) => setSearch(e.target.value)} />
                                                     <button className="cmn-btn">
                                                         <i className="far fa-search"></i>
                                                     </button>

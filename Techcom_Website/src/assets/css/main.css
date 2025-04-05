@@ -1572,7 +1572,7 @@ span {
 }
 
 .header-top-1 {
-  padding: 14px 0;
+  padding: 13px 0;
   background-color: var(--theme);
 }
 @media (max-width: 1199px) {
@@ -2060,7 +2060,7 @@ span {
   }
 }
 .header-1 .header-left .logo {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 @media (max-width: 1199px) {
   .header-1 .header-left .logo {
@@ -2069,12 +2069,12 @@ span {
 }
 .header-1 .header-left .logo a {
   position: relative;
-  margin-right: 70px;
+  margin-right: 100px;
   z-index: 5;
 }
 @media (max-width: 1600px) {
   .header-1 .header-left .logo a {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 }
 @media (max-width: 1199px) {
@@ -2178,7 +2178,7 @@ span {
   top: -1%;
   left: -3%;
   width: 458px;
-  height: 177px;
+  height: 169px;
   z-index: 2;
   border-radius: 0px 100px 0px 0px;
   background-color: var(--header);
@@ -2216,7 +2216,7 @@ span {
   top: -1%;
   left: -3%;
   width: 470px;
-  height: 177px;
+  height: 169px;
   z-index: 1;
   border-radius: 0px 100px 0px 0px;
   background: var(--white);
@@ -2384,7 +2384,7 @@ span {
   gap: 20px;
   font-size: 16px;
   border: 1px solid rgba(92, 112, 126, 0.3);
-  padding: 16px 30px;
+  padding: 15.5px 30px;
   border-radius: 100px 0px 0px 100px;
   border-right: none !important;
   padding-left: 50px;
@@ -3329,7 +3329,7 @@ span {
 .breadcrumb-wrapper {
   position: relative;
   overflow: hidden;
-  background: #E6EFF2;
+  background: #84adbb;
   padding: 173px 0;
 }
 .breadcrumb-wrapper .book1 {
@@ -3887,7 +3887,7 @@ span {
 
 .hero-1 {
   position: relative;
-  background-color: var(--bg);
+  background-color: #99ccdc;
 }
 .hero-1 .book-shape,
 .hero-1 .frame-shape1,
@@ -8117,4 +8117,12 @@ span {
   display: flex;
   align-items: center; /* Căn giữa icon và username */
   gap: 10px; /* Khoảng cách giữa icon và username */
+}
+.text-multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Số dòng muốn hiển thị */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3rem; /* Chiều cao cố định, tùy thuộc vào line-height */
 }

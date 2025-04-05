@@ -97,7 +97,7 @@ export default function Shop() {
                                                             </ul>
                                                         </div>
                                                         <div className="shop-content">
-                                                            <h3><a href={`/shopdetail/${product._id}`}>{product.title}</a></h3>
+                                                        <h3><a href={`/shopdetail/${product._id}`} className="text-dark text-decoration-none text-multiline-ellipsis">{product.title}</a></h3>
                                                             <ul className="price-list">
                                                                 <li>${product.price}</li>
                                                                 <li>

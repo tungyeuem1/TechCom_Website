@@ -21,7 +21,7 @@ const ProductSchema = new Schema(
     },
     author: {
       type: String,
-      required: false,
+      required: true,
     },
     rating: {
       type: Number,
@@ -29,8 +29,9 @@ const ProductSchema = new Schema(
     },
     rating1: {
       rate: { type: Number, required: false },
-      count: { type: Number, required: false}
+      count: { type: Number, required: false }
     },
+    featured: { type: Boolean, default: false },
     format: {
       type: String,
       required: false,
@@ -39,6 +40,8 @@ const ProductSchema = new Schema(
       type: Number,
       required: false,
     },
+
+    category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true }
   },
   {
     timestamps: true,
